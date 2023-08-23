@@ -1,18 +1,16 @@
-
-function countOccurrences(arr) {
-    const occurrences = new Map();
+// task # 2
+const filterMostOftenNumber = numsArr => {
+    //Code here
+  const repeating = new Map();
+  let maxRep = 0;
+  
+  numsArr.forEach(element => { const count = (repeating.get(element) || 0) +1;
+  repeating.set(element, count);
+  if(count > maxRep ) {
+      maxRep = count
+  }
+  });
+  const newArr = numsArr.filter(element => repeating.get(element) !== maxRep); 
     
-    arr.forEach(element => {
-        if (occurrences.has(element)) {
-            occurrences.set(element, occurrences.get(element) + 1);
-        } else {
-            occurrences.set(element, 1);
-        }
-    });
-    
-    return occurrences;
+    return newArr;
 }
-
-const myArray = [2, 4, 2, 7, 8, 2, 5, 2];
-const result = countOccurrences(myArray);
-console.log(result);
